@@ -11,7 +11,7 @@ module.exports = env => {
 		mode: 'development',
 		devtool: 'eval-source-map',
 		devServer: {
-			static: './src/assets'
+			static: './assets'
 		},
 		resolve: {
 			extensions: [ '.ts', '.tsx', '.js' ]
