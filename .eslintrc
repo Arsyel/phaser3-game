@@ -12,7 +12,7 @@
   "overrides": [
     {
       "files":  ["*.{ts,tsx}"],
-			"rules": {
+      "rules": {
         "@typescript-eslint/semi": ["warn"],
         "@typescript-eslint/no-empty-function": ["error",
           {
