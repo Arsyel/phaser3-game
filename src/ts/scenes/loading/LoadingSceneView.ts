@@ -18,7 +18,7 @@ export class LoadingSceneView {
 
 	updateProgressText (value: number) {
 		const percent = Math.round(value * 100);
-		this._progressText.setText(`${percent}%`)
+		this._progressText.setText(`${percent}%`);
 	}
 
 }

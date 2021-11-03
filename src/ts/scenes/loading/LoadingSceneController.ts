@@ -14,21 +14,21 @@ export class LoadingSceneController extends Phaser.Scene {
 		this.onCompleteLoad = this.onCompleteLoad.bind(this);
 	}
 
-	init (): void {
+	init () {
 		this.view = new LoadingSceneView(this);
 	}
 
-	preload (): void {
+	preload () {
 		this.load.once('complete', this.onCompleteLoadBoot);
 		this.loadBootResources();
 		this.load.start(); // Execute: onCompleteLoadBoot
 	}
 
-	loadBootResources (): void {
+	loadBootResources () {
 		// LoaderHelper.LoadAssets(this, LoadingAsset as CustomTypes.Asset.ObjectAsset);
 	}
 
-	onCompleteLoadBoot (): void {
+	onCompleteLoadBoot () {
 		this.view.create();
 		this.load.on('progress', (value: number) => this.view.updateProgressText(value));
 
@@ -37,14 +37,14 @@ export class LoadingSceneController extends Phaser.Scene {
 		this.load.start(); // Execute: onCompleteLoad
 	}
 
-	loadGameResources (): void {
+	loadGameResources () {
 		// LOAD ALL GAME FILE HERE!
 		// LoaderHelper.LoadAssets(this, GameplayAsset as CustomTypes.Asset.ObjectAsset);
 		LoadAssets(this, audioAsset);
 		LoadAssets(this, gameplayAsset);
 	}
 
-	onCompleteLoad (): void {
+	onCompleteLoad () {
 		this.load.removeAllListeners();
 		this.scene.start(SceneInfo.GAMEPLAY.key);
 	}

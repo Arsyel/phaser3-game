@@ -15,9 +15,9 @@ export const SceneInfo = {
 		key: 'GameplayScene',
 		scene: GameplaySceneController
 	},
-}
+};
 
-function SceneList(): Function[] {
+function SceneList() {
 	return Object.values(SceneInfo).map((info) => info.scene);
 }
 

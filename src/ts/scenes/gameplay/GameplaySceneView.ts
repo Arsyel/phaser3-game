@@ -9,7 +9,7 @@ export class GameplaySceneView {
 	evenName = {
 		onCreateFinish: 'onCreateFinish',
 		onTapToped: 'onTapToped',
-	}
+	};
 
 	private _screenUtil: ScreenUtilityController;
 	private _image: Image;
@@ -35,7 +35,7 @@ export class GameplaySceneView {
 		titleText.setOrigin(0.5, 0);
 
 		const toped = new Image(this._scene, centerX, centerY, gameplayAsset.logo.key);
-		toped.transform.setToScaleDisplaySize(backgroundRatio * 0.25)
+		toped.transform.setToScaleDisplaySize(backgroundRatio * 0.25);
 
 		const initialScale = toped.gameObject.scale;
 		const tweenTapEffect = this._scene.tweens.create({

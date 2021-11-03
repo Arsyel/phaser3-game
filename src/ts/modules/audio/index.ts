@@ -11,7 +11,7 @@ class AudioController {
 
 	private constructor () {}
 
-	static getInstance (): AudioController {
+	static getInstance () {
 		if (!AudioController.instance) {
 			AudioController.instance = new AudioController();
 		}
@@ -32,7 +32,7 @@ class AudioController {
 		});
 	}
 
-	private registerVisibilityChangeEvent (): void {
+	private registerVisibilityChangeEvent () {
 		const gameEvent = this._scene.game.events;
 		gameEvent.on('hidden', () => {
 			this.pauseBGM();
@@ -42,7 +42,7 @@ class AudioController {
 		});
 	}
 
-	playBGM (key: string, restart: boolean = true, config?: Phaser.Types.Sound.SoundConfig): void {
+	playBGM (key: string, restart = true, config?: Phaser.Types.Sound.SoundConfig) {
 		if (!restart && this._bgm?.isPlaying) return;
 		this.stopBGM();
 
@@ -59,23 +59,23 @@ class AudioController {
 		}
 	}
 
-	stopBGM (): void {
+	stopBGM () {
 		if (this._bgm?.isPlaying) this._bgm.stop();
 	}
 
-	pauseBGM (): void {
+	pauseBGM () {
 		if (this._bgm?.isPlaying) this._bgm.pause();
 	}
 
-	resumeBGM (): void {
+	resumeBGM () {
 		if (this._bgm?.isPaused) this._bgm.resume();
 	}
 
-	setBGMVolume (volume: number): void {
+	setBGMVolume (volume: number) {
 		if (this._bgm instanceof Phaser.Sound.WebAudioSound) this._bgm.setVolume(volume);
 	}
 
-	playSFX (key: string, config?: Phaser.Types.Sound.SoundConfig, force: boolean = true): void {
+	playSFX (key: string, config?: Phaser.Types.Sound.SoundConfig, force = true) {
 		if (!this._enableAudio) return;
 		if (!this._sfxCache.has(key)) {
 			const sfx = this._scene.sound.add(key, config);
@@ -88,22 +88,22 @@ class AudioController {
 		}
 	}
 
-	unmute (): void {
+	unmute () {
 		this._enableAudio = true;
 		this.resumeBGM();
 	}
 
-	mute (): void {
+	mute () {
 		this._enableAudio = false;
 		this.pauseBGM();
 	}
 
-	isMuted (): boolean {
+	isMuted () {
 		return this._enableAudio;
 	}
 
-	clearSFXCache (): void {
-		for (let [, sfx] of this._sfxCache) {
+	clearSFXCache () {
+		for (const [, sfx] of this._sfxCache) {
 			sfx.destroy();
 		}
 		this._sfxCache.clear();

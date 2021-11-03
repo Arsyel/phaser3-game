@@ -10,11 +10,11 @@ export class Sprite {
 		this._transform = new Transform(this._gameObject);
 	}
 
-	get gameObject (): Phaser.GameObjects.Sprite {
+	get gameObject () {
 		return this._gameObject;
 	}
 
-	get transform (): Transform {
+	get transform () {
 		return this._transform;
 	}
 

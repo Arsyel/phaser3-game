@@ -8,7 +8,7 @@ export class BootSceneController extends Phaser.Scene {
 		super({ key: SceneInfo.BOOT.key });
 	}
 
-	init (): void {
+	init () {
 		ScreenUtilityController.getInstance().init(this.scale);
 
 		Promise.all([

@@ -3,8 +3,8 @@ class ScreenUtilityController {
 	private static instance: ScreenUtilityController;
 
 	private _scaleManager: Phaser.Scale.ScaleManager;
-	private _defaultWidth: number = 1080;
-	private _defaultHeight: number = 1920;
+	private _defaultWidth = 1080;
+	private _defaultHeight = 1920;
 
 	private constructor () {}
 

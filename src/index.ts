@@ -1,6 +1,4 @@
-/// <reference path="../node_modules/phaser/types/phaser.d.ts" />
-// import 'phaser';
-
+import 'phaser';
 import './css/index.css';
 
 import { CONFIG } from './config';

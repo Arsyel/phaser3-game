@@ -1,8 +1,10 @@
 import AudioController from '../../modules/audio';
+import { CustomTypes } from '../../../types/custom';
 import { GameplaySceneView } from './GameplaySceneView';
 import { SceneInfo } from '..';
 
 type OnTapToped = (props: { audioKey: string }) => void;
+type OnCreateFinish = CustomTypes.General.Noop;
 
 export class GameplaySceneController extends Phaser.Scene {
 
@@ -10,7 +12,7 @@ export class GameplaySceneController extends Phaser.Scene {
 	audioController: AudioController;
 
 	constructor () {
-		super({ key: SceneInfo.GAMEPLAY.key })
+		super({ key: SceneInfo.GAMEPLAY.key });
 	}
 
 	init () {
@@ -21,14 +23,16 @@ export class GameplaySceneController extends Phaser.Scene {
 			this.audioController.playSFX(props.audioKey);
 		});
 
-		this.onCreateFinish(() => {});
+		this.onCreateFinish(() => {
+			// pass
+		});
 	}
 
 	create () {
 		this.view.create();
 	}
 
-	onCreateFinish (event: Function) {
+	onCreateFinish (event: OnCreateFinish) {
 		this.view.event.once(this.view.evenName.onCreateFinish, event);
 	}
 

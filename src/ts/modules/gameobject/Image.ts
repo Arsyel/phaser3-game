@@ -10,11 +10,11 @@ export class Image {
 		this._transform = new Transform(this._gameObject);
 	}
 
-	get gameObject (): Phaser.GameObjects.Image {
+	get gameObject () {
 		return this._gameObject;
 	}
 
-	get transform (): Transform {
+	get transform () {
 		return this._transform;
 	}
 

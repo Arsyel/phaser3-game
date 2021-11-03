@@ -7,7 +7,9 @@ export declare namespace CustomTypes {
 		type KeyValuePair<K, V> = {
 			key: K,
 			value: V
-		}
+		};
+
+		type Noop = () => void;
 
 	}
 
@@ -16,14 +18,14 @@ export declare namespace CustomTypes {
 		type BaseAssetInfoType = {
 			key: string,
 			type: AssetType
-		}
+		};
 
 		type AssetInfoType = BaseAssetInfoType & {
 			url: string | string[],
 			width?: number,
 			height?: number,
 			config?: object
-		}
+		};
 
 		type AnimationInfoType = BaseAssetInfoType & {
 			spritesheetRef: string,
@@ -31,7 +33,7 @@ export declare namespace CustomTypes {
 			end: number,
 			frameSpeed: number,
 			loop?: true
-		}
+		};
 
 		interface ObjectAsset {
 			[key: string]: AssetInfoType
@@ -48,8 +50,8 @@ export declare namespace CustomTypes {
 		type GeneralData = {
 			screenRatio: number;
 			initialPos?: { x: number, y: number }
-			data?: any;
-		}
+			data?: unknown;
+		};
 
 	}
 
