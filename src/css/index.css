@@ -1,0 +1,19 @@
+body {
+	background-color: #1e1e1e;
+	margin: 0;
+	overflow: hidden;
+}
+
+body #game-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+#game-wrapper {
+	touch-action: manipulation;
+}
+
+a, button {
+  -ms-touch-action: manipulation; /* IE10  */
+  touch-action: manipulation; /* IE11+ */
+}
