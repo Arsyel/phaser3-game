@@ -23,9 +23,7 @@ export class GameplaySceneController extends Phaser.Scene {
 			this.audioController.playSFX(props.audioKey);
 		});
 
-		this.onCreateFinish(() => {
-			// pass
-		});
+		this.onCreateFinish(() => {});
 	}
 
 	create () {
