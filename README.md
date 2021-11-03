@@ -21,7 +21,7 @@ In `package.json` file and section `scripts` listed handy commands to help your 
 
 | script | details |
 | ------ | ------- |
-| `npm run dev` | Start your development server in port 8080 (if available), also notice that folder `./src/assets` is served as public static folder
+| `npm run dev` | Start your development server in port 8080 (if available), also notice that folder `./assets` is served as public static folder
 | `npm run build` | Build your project into `dist/` folder
 | `npm run dist` | Run static server from your `dist/` folder
 
