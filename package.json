@@ -14,7 +14,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"phaser": "^3.55.2"
+		"phaser": "3.55.2"
 	},
 	"devDependencies": {
 		"clean-webpack-plugin": "^4.0.0",
