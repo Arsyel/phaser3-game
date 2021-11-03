@@ -5,4 +5,5 @@ export const enum AssetType {
 	AUDIO,
 	FONT,
 	JSON,
+	HTML,
 }

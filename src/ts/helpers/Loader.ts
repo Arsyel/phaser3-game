@@ -25,6 +25,9 @@ export function LoadAssets (scene: Phaser.Scene, assets: CustomTypes.Asset.Objec
 		else if (assetInfo.type === AssetType.JSON) {
 			scene.load.json(assetInfo.key, assetInfo.url);
 		}
+		else if (assetInfo.type === AssetType.HTML) {
+			scene.load.html(assetInfo.key, assetInfo.url as string);
+		}
 		else {
 			console.warn('Asset type is undefined:', assetInfo);
 		}
