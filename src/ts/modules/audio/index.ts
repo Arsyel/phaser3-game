@@ -18,8 +18,8 @@ class AudioController {
 		return AudioController.instance;
 	}
 
-	init (scene: Phaser.Scene): Promise<void> {
-		return new Promise((resolve, reject) => {
+	init (scene: Phaser.Scene) {
+		return new Promise<void>((resolve, reject) => {
 			if (this._isInitialize) reject(Error('AudioControllor has been initialized!'));
 			this._scene = scene;
 			this._sfxCache = new Map<string, Phaser.Sound.BaseSound>();
