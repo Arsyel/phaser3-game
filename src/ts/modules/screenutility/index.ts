@@ -1,50 +1,50 @@
 class ScreenUtilityController {
 
-	private static instance: ScreenUtilityController;
+  private static instance: ScreenUtilityController;
 
-	private _scaleManager: Phaser.Scale.ScaleManager;
-	private _defaultWidth = 1080;
-	private _defaultHeight = 1920;
+  private _scaleManager: Phaser.Scale.ScaleManager;
+  private _defaultWidth = 1080;
+  private _defaultHeight = 1920;
 
-	private constructor () {}
+  private constructor () {}
 
-	static getInstance () {
-		if (!ScreenUtilityController.instance) {
-			ScreenUtilityController.instance = new ScreenUtilityController();
-		}
-		return ScreenUtilityController.instance;
-	}
+  static getInstance () {
+    if (!ScreenUtilityController.instance) {
+      ScreenUtilityController.instance = new ScreenUtilityController();
+    }
+    return ScreenUtilityController.instance;
+  }
 
-	get width () {
-		return this._scaleManager.width;
-	}
+  get width () {
+    return this._scaleManager.width;
+  }
 
-	get height () {
-		return this._scaleManager.height;
-	}
+  get height () {
+    return this._scaleManager.height;
+  }
 
-	get centerX () {
-		return this._scaleManager.width * 0.5;
-	}
+  get centerX () {
+    return this._scaleManager.width * 0.5;
+  }
 
-	get centerY () {
-		return this._scaleManager.height * 0.5;
-	}
+  get centerY () {
+    return this._scaleManager.height * 0.5;
+  }
 
-	get screenPercentage () {
-		return this._scaleManager.width / this._defaultWidth;
-	}
+  get screenPercentage () {
+    return this._scaleManager.width / this._defaultWidth;
+  }
 
-	get defaultScreenSize () {
-		return {
-			width: this._defaultWidth,
-			height: this._defaultHeight
-		};
-	}
+  get defaultScreenSize () {
+    return {
+      width: this._defaultWidth,
+      height: this._defaultHeight
+    };
+  }
 
-	init (scene: Phaser.Scale.ScaleManager) {
-		this._scaleManager = scene;
-	}
+  init (scene: Phaser.Scale.ScaleManager) {
+    this._scaleManager = scene;
+  }
 
 }
 

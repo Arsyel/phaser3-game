@@ -38,7 +38,7 @@ const portraitConversion = (config: CalculateScreenType) => {
 };
 
 function ScreenProfile () {
-	return portraitConversion(calculateScreen());
+  return portraitConversion(calculateScreen());
 }
 
 export default ScreenProfile;
