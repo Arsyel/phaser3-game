@@ -1,4 +1,3 @@
-import 'phaser';
 import './css/index.css';
 
 import { CONFIG } from './config';
