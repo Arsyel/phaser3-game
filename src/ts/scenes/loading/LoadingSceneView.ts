@@ -6,6 +6,7 @@ export class LoadingSceneView {
 
   create () {
     this._progressText = this._scene.add.text(this._scene.scale.width / 2, this._scene.scale.height / 2, '0%', {
+			fontFamily: 'sans-serif',
       color: '#fafafa',
       fontStyle: 'bold',
       align: 'center'
