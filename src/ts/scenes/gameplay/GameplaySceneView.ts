@@ -5,62 +5,62 @@ import { gameplayAsset } from './../../collections/GameplayAsset';
 
 export class GameplaySceneView {
 
-	event: Phaser.Events.EventEmitter;
-	evenName = {
-		onCreateFinish: 'onCreateFinish',
-		onTapToped: 'onTapToped',
-	};
+  event: Phaser.Events.EventEmitter;
+  evenName = {
+    onCreateFinish: 'onCreateFinish',
+    onTapToped: 'onTapToped',
+  };
 
-	private _screenUtil: ScreenUtilityController;
-	private _image: Image;
+  private _screenUtil: ScreenUtilityController;
+  private _image: Image;
 
-	constructor (private _scene: Phaser.Scene) {
-		this.event = new Phaser.Events.EventEmitter();
+  constructor (private _scene: Phaser.Scene) {
+    this.event = new Phaser.Events.EventEmitter();
     this._screenUtil = ScreenUtilityController.getInstance();
-	}
+  }
 
-	create () {
-		const { centerX, centerY } = this._screenUtil;
-		this._image = new Image(this._scene, centerX, centerY, gameplayAsset.test_image.key);
-		this._image.transform.setMaxPreferredDisplaySize(this._screenUtil.width, this._screenUtil.height);
+  create () {
+    const { centerX, centerY } = this._screenUtil;
+    this._image = new Image(this._scene, centerX, centerY, gameplayAsset.test_image.key);
+    this._image.transform.setMaxPreferredDisplaySize(this._screenUtil.width, this._screenUtil.height);
 
-		const backgroundRatio = this._image.transform.ratio;
+    const backgroundRatio = this._image.transform.ratio;
 
-		const titleText = this._scene.add.text(centerX, centerY * 0.5, 'Tokopedia Seru', {
-			fontFamily: 'sans-serif',
-			fontSize: `${82 * backgroundRatio}px`,
-			align: 'center',
-			padding: { top: 8 }
-		});
-		titleText.setOrigin(0.5, 0);
+    const titleText = this._scene.add.text(centerX, centerY * 0.5, 'Tokopedia Seru', {
+      fontFamily: 'sans-serif',
+      fontSize: `${82 * backgroundRatio}px`,
+      align: 'center',
+      padding: { top: 8 }
+    });
+    titleText.setOrigin(0.5, 0);
 
-		const toped = new Image(this._scene, centerX, centerY, gameplayAsset.logo.key);
-		toped.transform.setToScaleDisplaySize(backgroundRatio * 0.25);
+    const toped = new Image(this._scene, centerX, centerY, gameplayAsset.logo.key);
+    toped.transform.setToScaleDisplaySize(backgroundRatio * 0.25);
 
-		const initialScale = toped.gameObject.scale;
-		const tweenTapEffect = this._scene.tweens.create({
-			targets: toped.gameObject,
-			props: {
-				scale: { getStart: () => initialScale, getEnd: () => initialScale * 0.95 },
-			},
-			yoyo: true,
-			duration: 50,
-		});
+    const initialScale = toped.gameObject.scale;
+    const tweenTapEffect = this._scene.tweens.create({
+      targets: toped.gameObject,
+      props: {
+        scale: { getStart: () => initialScale, getEnd: () => initialScale * 0.95 },
+      },
+      yoyo: true,
+      duration: 50,
+    });
 
-		toped.gameObject.setInteractive({ useHandCursor: true })
-			.on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
-				tweenTapEffect.once(Phaser.Tweens.Events.TWEEN_COMPLETE, () => this.event.emit(
-					this.evenName.onTapToped, { audioKey: audioAsset.sfx_click.key })
-				);
-				tweenTapEffect.play();
+    toped.gameObject.setInteractive({ useHandCursor: true })
+      .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
+        tweenTapEffect.once(Phaser.Tweens.Events.TWEEN_COMPLETE, () => this.event.emit(
+          this.evenName.onTapToped, { audioKey: audioAsset.sfx_click.key })
+        );
+        tweenTapEffect.play();
 
-				const nextCounter = (toped.gameObject.getData('counter') as number) + 1;
-				titleText.setText(nextCounter.toString());
-				toped.gameObject.setData('counter', nextCounter);
-			})
-			.setData('counter', 0);
+        const nextCounter = (toped.gameObject.getData('counter') as number) + 1;
+        titleText.setText(nextCounter.toString());
+        toped.gameObject.setData('counter', nextCounter);
+      })
+      .setData('counter', 0);
 
-		this.event.emit(this.evenName.onCreateFinish);
-	}
+    this.event.emit(this.evenName.onCreateFinish);
+  }
 
 }
