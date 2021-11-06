@@ -1,7 +1,7 @@
 import { AssetType } from '../enum/AssetType';
 import { CustomTypes } from '../../types/custom';
 
-export function LoadAssets (scene: Phaser.Scene, assets: CustomTypes.Asset.ObjectAsset) {
+function LoadAssets (scene: Phaser.Scene, assets: CustomTypes.Asset.ObjectAsset) {
   let assetInfo: CustomTypes.Asset.AssetInfoType;
   for (const key in assets) {
     assetInfo = assets[key];
@@ -33,3 +33,5 @@ export function LoadAssets (scene: Phaser.Scene, assets: CustomTypes.Asset.Objec
     }
   }
 }
+
+export default LoadAssets;

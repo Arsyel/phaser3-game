@@ -1,4 +1,4 @@
-import { LoadAssets } from '../../helpers/Loader';
+import LoadAssets from '../../helpers/Loader';
 import { LoadingSceneView } from './LoadingSceneView';
 import { SceneInfo } from '..';
 import { audioAsset } from '../../collections/AudioAsset';
@@ -25,7 +25,7 @@ export class LoadingSceneController extends Phaser.Scene {
   }
 
   loadBootResources () {
-    // LoaderHelper.LoadAssets(this, LoadingAsset as CustomTypes.Asset.ObjectAsset);
+    // LOAD LOADING FILE HERE!
   }
 
   onCompleteLoadBoot () {
