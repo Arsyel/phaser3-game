@@ -1,5 +1,5 @@
 import { AssetType } from '../enum/AssetType';
-import { CustomTypes } from '../../types/custom';
+import CustomTypes from '../../types/custom';
 
 function LoadAssets (scene: Phaser.Scene, assets: CustomTypes.Asset.ObjectAsset) {
   let assetInfo: CustomTypes.Asset.AssetInfoType;

@@ -1,6 +1,6 @@
 import { AssetType } from '../ts/enum/AssetType';
 
-export declare namespace CustomTypes {
+declare namespace CustomTypes {
 
 	namespace General {
 
@@ -56,3 +56,5 @@ export declare namespace CustomTypes {
 	}
 
 }
+
+export default CustomTypes;

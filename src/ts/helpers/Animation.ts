@@ -1,4 +1,4 @@
-import { CustomTypes } from '../../types/custom';
+import CustomTypes from '../../types/custom';
 
 export function AddAnimation (scene: Phaser.Scene, animationObject: CustomTypes.Asset.AnimationInfoType) {
   const frames = scene.anims.generateFrameNumbers(animationObject.spritesheetRef, {

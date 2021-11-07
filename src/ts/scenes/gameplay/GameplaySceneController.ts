@@ -1,5 +1,5 @@
 import AudioController from '../../modules/audio';
-import { CustomTypes } from '../../../types/custom';
+import CustomTypes from '../../../types/custom';
 import { GameplaySceneView } from './GameplaySceneView';
 import { SceneInfo } from '..';
 
