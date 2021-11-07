@@ -11,18 +11,16 @@ export class GameplaySceneView {
     onTapToped: 'onTapToped',
   };
 
-  private _screenUtil: ScreenUtilityController;
   private _image: Image;
 
-  constructor (private _scene: Phaser.Scene) {
+  constructor (private _scene: Phaser.Scene, private _screenUtil: ScreenUtilityController) {
     this.event = new Phaser.Events.EventEmitter();
-    this._screenUtil = ScreenUtilityController.getInstance();
   }
 
   create () {
-    const { centerX, centerY } = this._screenUtil;
+    const { centerX, centerY, width, height } = this._screenUtil;
     this._image = new Image(this._scene, centerX, centerY, gameplayAsset.test_image.key);
-    this._image.transform.setMaxPreferredDisplaySize(this._screenUtil.width, this._screenUtil.height);
+    this._image.transform.setMaxPreferredDisplaySize(width, height);
 
     const backgroundRatio = this._image.transform.ratio;
 

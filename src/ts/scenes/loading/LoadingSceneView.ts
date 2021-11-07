@@ -1,11 +1,14 @@
+import ScreenUtilityController from '../../modules/screenutility';
+
 export class LoadingSceneView {
 
   private _progressText: Phaser.GameObjects.Text;
 
-  constructor (private _scene: Phaser.Scene) {}
+  constructor (private _scene: Phaser.Scene, private _screenUtil: ScreenUtilityController) {}
 
   create () {
-    this._progressText = this._scene.add.text(this._scene.scale.width / 2, this._scene.scale.height / 2, '0%', {
+    const { centerX, centerY } = this._screenUtil;
+    this._progressText = this._scene.add.text(centerX, centerY, '0%', {
 			fontFamily: 'sans-serif',
       color: '#fafafa',
       fontStyle: 'bold',
@@ -14,7 +17,7 @@ export class LoadingSceneView {
 
     this._progressText
       .setOrigin(0.5, 0)
-      .setFontSize(48 * (this._scene.scale.width / 1080));
+      .setFontSize(48 * this._screenUtil.screenPercentage);
   }
 
   updateProgressText (value: number) {

@@ -1,6 +1,7 @@
 import LoadAssets from '../../helpers/Loader';
 import { LoadingSceneView } from './LoadingSceneView';
 import { SceneInfo } from '..';
+import ScreenUtilityController from '../../modules/screenutility';
 import { audioAsset } from '../../collections/AudioAsset';
 import { gameplayAsset } from './../../collections/GameplayAsset';
 
@@ -15,7 +16,7 @@ export class LoadingSceneController extends Phaser.Scene {
   }
 
   init () {
-    this.view = new LoadingSceneView(this);
+    this.view = new LoadingSceneView(this, ScreenUtilityController.getInstance());
   }
 
   preload () {
