@@ -24,8 +24,14 @@ export class LoadingSceneController extends Phaser.Scene {
     this.load.start(); // Execute: onCompleteLoadBoot
   }
 
-  loadBootResources () {
+  private loadBootResources () {
     // LOAD LOADING FILE HERE!
+  }
+
+  private loadGameResources () {
+    // LOAD ALL GAME FILE HERE!
+    LoadAssets(this, audioAsset);
+    LoadAssets(this, gameplayAsset);
   }
 
   onCompleteLoadBoot () {
@@ -35,13 +41,6 @@ export class LoadingSceneController extends Phaser.Scene {
     this.load.once('complete', this.onCompleteLoad);
     this.loadGameResources();
     this.load.start(); // Execute: onCompleteLoad
-  }
-
-  loadGameResources () {
-    // LOAD ALL GAME FILE HERE!
-    // LoaderHelper.LoadAssets(this, GameplayAsset as CustomTypes.Asset.ObjectAsset);
-    LoadAssets(this, audioAsset);
-    LoadAssets(this, gameplayAsset);
   }
 
   onCompleteLoad () {
