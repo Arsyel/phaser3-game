@@ -1,5 +1,3 @@
-import ScreenUtilityController from '../screenutility';
-
 type GameObject = (
 		Phaser.GameObjects.GameObject
 		& Phaser.GameObjects.Components.ComputedSize
@@ -41,11 +39,6 @@ class Transform {
 
   setToScaleDisplaySize (percent: number) {
     this.setDisplaySize(percent * this._gameObject.width, percent * this._gameObject.height);
-  }
-
-  setToScreenPercentage (percentage = 1) {
-    const value = (ScreenUtilityController.getInstance().screenPercentage) * percentage;
-    this.setToScaleDisplaySize(value);
   }
 
   setDisplayHeightToAspectRatio () {
