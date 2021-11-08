@@ -1,6 +1,6 @@
 class ScreenUtilityController {
 
-  private static instance: ScreenUtilityController;
+  private static _instance: ScreenUtilityController;
 
   private _scaleManager: Phaser.Scale.ScaleManager;
   private _defaultWidth = 1080;
@@ -9,10 +9,10 @@ class ScreenUtilityController {
   private constructor () {}
 
   static getInstance () {
-    if (!ScreenUtilityController.instance) {
-      ScreenUtilityController.instance = new ScreenUtilityController();
+    if (!ScreenUtilityController._instance) {
+      ScreenUtilityController._instance = new ScreenUtilityController();
     }
-    return ScreenUtilityController.instance;
+    return ScreenUtilityController._instance;
   }
 
   get width () {

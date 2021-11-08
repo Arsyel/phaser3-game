@@ -1,6 +1,6 @@
 class AudioController {
 
-  static instance: AudioController;
+  private static _instance: AudioController;
 
   private _scene: Phaser.Scene;
   private _bgm: Phaser.Sound.BaseSound;
@@ -12,10 +12,10 @@ class AudioController {
   private constructor () {}
 
   static getInstance () {
-    if (!AudioController.instance) {
-      AudioController.instance = new AudioController();
+    if (!AudioController._instance) {
+      AudioController._instance = new AudioController();
     }
-    return AudioController.instance;
+    return AudioController._instance;
   }
 
   init (scene: Phaser.Scene) {
