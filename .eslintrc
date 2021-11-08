@@ -1,0 +1,26 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "overrides": [
+    {
+      "files":  ["*.{ts,tsx}"],
+      "rules": {
+        "indent": ["warn", 2],
+        "@typescript-eslint/semi": ["warn"],
+        "@typescript-eslint/no-empty-function": ["error",
+          {
+            "allow": ["constructors"]
+          }
+        ]
+      }
+    }
+  ]
+}
