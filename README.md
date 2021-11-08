@@ -11,9 +11,9 @@
 1. Clone this repo
 2. Install all your dependencies by run `npm install` or `yarn install`
 3. Run your dev server by `npm run dev`
-4. Make changes under `LoadingSceneController.ts` if you want to load some assets (It's defined from `ts/collections/` dir)
-5. Make changes under `GameplaySceneController.ts` for your main gameplay script
-6. Make changes under `src/index.ts` if you want to add new scene
+4. Make changes under [`LoadingSceneController.ts`](https://github.com/Arsyel/phaser3-game/blob/main/src/ts/scenes/loading/LoadingSceneController.ts) if you want to load some assets (It's defined from [`ts/collections/`](https://github.com/Arsyel/phaser3-game/tree/main/src/ts/collections) dir)
+5. Make changes under [`GameplaySceneController.ts`](https://github.com/Arsyel/phaser3-game/blob/main/src/ts/scenes/gameplay/GameplaySceneController.ts) for your main gameplay script
+6. Make changes under [`src/index.ts`](https://github.com/Arsyel/phaser3-game/blob/main/src/index.ts) if you want to add new scene
 
 ## CLI
 
