@@ -6,7 +6,8 @@ body {
 
 body #game-wrapper {
 	display: flex;
-	justify-content: center;
+	/* Disable `justify-content` when using DOM Element */
+	/* justify-content: center; */
 }
 
 #game-wrapper {

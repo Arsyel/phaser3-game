@@ -9,7 +9,7 @@ export class LoadingSceneView {
   create () {
     const { centerX, centerY } = this._screenUtil;
     this._progressText = this._scene.add.text(centerX, centerY, '0%', {
-			fontFamily: 'sans-serif',
+      fontFamily: 'sans-serif',
       color: '#fafafa',
       fontStyle: 'bold',
       align: 'center'
