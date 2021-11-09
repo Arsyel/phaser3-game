@@ -11,6 +11,8 @@ declare namespace CustomTypes {
 
 		type Noop = () => void;
 
+		type EventOp<T> = (e: T) => void;
+
 	}
 
 	namespace Asset {

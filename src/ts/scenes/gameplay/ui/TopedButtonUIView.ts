@@ -1,10 +1,11 @@
+import CustomTypes from '../../../../types/custom';
 import { Image } from './../../../modules/gameobject/Image';
 import { gameplayAsset } from './../../../collections/GameplayAsset';
 
 type Props = {
   pos: Required<Phaser.Types.Math.Vector2Like>;
   baseRatio: number;
-  onClick: Function;
+  onClick: CustomTypes.General.Noop;
 };
 
 export class TopedButtonUIView {
@@ -34,9 +35,6 @@ export class TopedButtonUIView {
 
     this._toped.gameObject.setInteractive({ useHandCursor: true })
       .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
-        // tweenTapEffect.once(Phaser.Tweens.Events.TWEEN_COMPLETE, () => this.event.emit(
-        //   this.evenName.onTapToped, { audioKey: audioAsset.sfx_click.key })
-        // );
         tweenTapEffect.once(Phaser.Tweens.Events.TWEEN_COMPLETE, onClick);
         tweenTapEffect.play();
       })
