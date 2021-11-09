@@ -8,6 +8,10 @@ type Props = {
   onClick: CustomTypes.General.Noop;
 };
 
+const enum Data {
+  COUNTER = 'COUNTER',
+};
+
 export class TopedButtonUIView {
 
   private _toped: Image;
@@ -15,7 +19,7 @@ export class TopedButtonUIView {
   constructor (private _scene: Phaser.Scene) {}
 
   get counter () {
-    return this._toped.gameObject.getData('counter') as number;
+    return this._toped.gameObject.getData(Data.COUNTER) as number;
   }
 
   create (props: Props) {
@@ -38,11 +42,11 @@ export class TopedButtonUIView {
         tweenTapEffect.once(Phaser.Tweens.Events.TWEEN_COMPLETE, onClick);
         tweenTapEffect.play();
       })
-      .setData('counter', 0);
+      .setData(Data.COUNTER, 0);
   }
 
   setCounter (value: number) {
-    this._toped.gameObject.setData('counter', value);
+    this._toped.gameObject.setData(Data.COUNTER, value);
   }
 
 }
