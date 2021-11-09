@@ -10,7 +10,7 @@ type Props = {
 
 const enum Data {
   COUNTER = 'COUNTER',
-};
+}
 
 export class TopedButtonUIView {
 

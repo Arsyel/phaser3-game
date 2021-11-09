@@ -54,7 +54,7 @@ export class GameplaySceneView {
       baseRatio: backgroundRatio,
       pos: { x: centerX, y: centerY * 1.25 },
       screenHeight: height,
-      onClick: (e) => {
+      onClick: () => {
         const nextCounter = this._topedButtonUIView.counter + 1;
         this._titleUIView.setText(nextCounter.toString());
         this._topedButtonUIView.setCounter(nextCounter);
