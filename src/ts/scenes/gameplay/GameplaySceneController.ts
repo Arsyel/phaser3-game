@@ -4,7 +4,8 @@ import { GameplaySceneView } from './GameplaySceneView';
 import { SceneInfo } from '..';
 import ScreenUtilityController from '../../modules/screenutility';
 
-type OnTapToped = (props: { audioKey: string }) => void;
+type OnTapToped = CustomTypes.General.Noop;
+type OnClickSFX = (props: { audioKey: string }) => void;
 type OnCreateFinish = CustomTypes.General.Noop;
 
 export class GameplaySceneController extends Phaser.Scene {
@@ -20,9 +21,12 @@ export class GameplaySceneController extends Phaser.Scene {
     this.view = new GameplaySceneView(this, ScreenUtilityController.getInstance());
     this.audioController = AudioController.getInstance();
 
-    this.onTapToped((props) => {
-      this.audioController.playSFX(props.audioKey);
+    this.onTapToped(() => {
       this.scene.start(); // Restart
+    });
+
+    this.onClickSFX(({ audioKey }) => {
+      this.audioController.playSFX(audioKey);
     });
 
     this.onCreateFinish(() => {
@@ -40,6 +44,10 @@ export class GameplaySceneController extends Phaser.Scene {
 
   onTapToped (event: OnTapToped) {
     this.view.event.on(this.view.evenName.onTapToped, event);
+  }
+
+  onClickSFX (event: OnClickSFX) {
+    this.view.event.on(this.view.evenName.onClickSFX, event);
   }
 
 }
