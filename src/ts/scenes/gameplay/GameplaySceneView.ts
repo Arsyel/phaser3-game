@@ -1,5 +1,8 @@
 import { Image } from '../../modules/gameobject/Image';
+import { PlayButtonUIView } from './ui/PlayButtonUIView';
 import ScreenUtilityController from '../../modules/screenutility';
+import { TitleUIView } from './ui/TitleUIView';
+import { TopedButtonUIView } from './ui/TopedButtonUIView';
 import { audioAsset } from '../../collections/AudioAsset';
 import { gameplayAsset } from './../../collections/GameplayAsset';
 
@@ -12,9 +15,15 @@ export class GameplaySceneView {
   };
 
   private _image: Image;
+  private _titleUIView: TitleUIView;
+  private _topedButtonUIView: TopedButtonUIView;
+  private _playHTMLButtonUIView: PlayButtonUIView;
 
   constructor (private _scene: Phaser.Scene, private _screenUtil: ScreenUtilityController) {
     this.event = new Phaser.Events.EventEmitter();
+    this._titleUIView = new TitleUIView(_scene);
+    this._topedButtonUIView = new TopedButtonUIView(_scene);
+    this._playHTMLButtonUIView = new PlayButtonUIView(_scene);
   }
 
   create () {
@@ -24,39 +33,30 @@ export class GameplaySceneView {
 
     const backgroundRatio = this._image.transform.ratio;
 
-    const titleText = this._scene.add.text(centerX, centerY * 0.5, 'Tokopedia Seru', {
-      fontFamily: 'sans-serif',
-      fontSize: `${82 * backgroundRatio}px`,
-      align: 'center',
-      padding: { top: 8 }
-    });
-    titleText.setOrigin(0.5, 0);
-
-    const toped = new Image(this._scene, centerX, centerY, gameplayAsset.logo.key);
-    toped.transform.setToScaleDisplaySize(backgroundRatio * 0.25);
-
-    const initialScale = toped.gameObject.scale;
-    const tweenTapEffect = this._scene.tweens.create({
-      targets: toped.gameObject,
-      props: {
-        scale: { getStart: () => initialScale, getEnd: () => initialScale * 0.95 },
-      },
-      yoyo: true,
-      duration: 50,
+    this._titleUIView.create({
+      pos: { x: centerX, y: centerY * 0.5 },
+      fontSize: 96 * backgroundRatio,
+      text: 'Tokopedia Seru',
     });
 
-    toped.gameObject.setInteractive({ useHandCursor: true })
-      .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
-        tweenTapEffect.once(Phaser.Tweens.Events.TWEEN_COMPLETE, () => this.event.emit(
-          this.evenName.onTapToped, { audioKey: audioAsset.sfx_click.key })
-        );
-        tweenTapEffect.play();
+    this._topedButtonUIView.create({
+      pos: { x: centerX, y: centerY },
+      baseRatio: backgroundRatio,
+      onClick: () => this.event.emit(
+        this.evenName.onTapToped, { audioKey: audioAsset.sfx_click.key }
+      )
+    });
 
-        const nextCounter = (toped.gameObject.getData('counter') as number) + 1;
-        titleText.setText(nextCounter.toString());
-        toped.gameObject.setData('counter', nextCounter);
-      })
-      .setData('counter', 0);
+    this._playHTMLButtonUIView.create({
+      baseRatio: backgroundRatio,
+      pos: { x: centerX, y: centerY * 1.25 },
+      screenHeight: height,
+      onClick: (e: PointerEvent) => {
+        const nextCounter = this._topedButtonUIView.counter + 1;
+        this._titleUIView.setText(nextCounter.toString());
+        this._topedButtonUIView.setCounter(nextCounter)
+      }
+    });
 
     this.event.emit(this.evenName.onCreateFinish);
   }

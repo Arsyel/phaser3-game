@@ -22,6 +22,7 @@ export class GameplaySceneController extends Phaser.Scene {
 
     this.onTapToped((props) => {
       this.audioController.playSFX(props.audioKey);
+      this.scene.start(); // Restart
     });
 
     this.onCreateFinish(() => {
