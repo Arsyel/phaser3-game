@@ -11,16 +11,14 @@ type Props = {
 
 export class PlayButtonUIView {
 
-  private _container: Phaser.GameObjects.Container;
-
   constructor (private _scene: Phaser.Scene) {}
 
   create (props: Props) {
     const { pos, screenHeight, baseRatio, onClick, label } = props;
     const buttonElement = this._scene.add.dom(pos.x, 0)
-      .createFromCache(gameplayAsset.button_html.key);
+      .createFromCache(gameplayAsset.button_html.key)
+      .setScale(2 * baseRatio);
 
-    buttonElement.setScale(2 * baseRatio);
     buttonElement.getChildByID('btn').innerHTML = label;
     buttonElement.updateSize();
 
