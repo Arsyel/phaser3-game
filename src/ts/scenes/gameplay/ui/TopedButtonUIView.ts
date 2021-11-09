@@ -1,10 +1,11 @@
+import CustomTypes from '../../../../types/custom';
 import { Image } from './../../../modules/gameobject/Image';
 import { gameplayAsset } from './../../../collections/GameplayAsset';
 
 type Props = {
   pos: Required<Phaser.Types.Math.Vector2Like>;
   baseRatio: number;
-  onClick: Function;
+  onClick: CustomTypes.General.Noop;
 };
 
 export class TopedButtonUIView {
