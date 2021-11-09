@@ -11,9 +11,9 @@ export const gameplayAsset = {
     url: 'img/img_responsive.png',
     type: AssetType.STATIC
   },
-  play_button_html: {
-    key: 'play_button_html',
-    url: 'html/PlayButton.html',
+  button_html: {
+    key: 'button_html',
+    url: 'html/Button.html',
     type: AssetType.HTML
   },
 };

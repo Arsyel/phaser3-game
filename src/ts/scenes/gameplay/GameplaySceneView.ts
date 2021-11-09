@@ -1,5 +1,5 @@
 import { Image } from '../../modules/gameobject/Image';
-import { PlayButtonUIView } from './ui/PlayButtonUIView';
+import { PlayButtonUIView } from './ui/ButtonUIView';
 import ScreenUtilityController from '../../modules/screenutility';
 import { TitleUIView } from './ui/TitleUIView';
 import { TopedButtonUIView } from './ui/TopedButtonUIView';
@@ -12,6 +12,7 @@ export class GameplaySceneView {
   evenName = {
     onCreateFinish: 'onCreateFinish',
     onTapToped: 'onTapToped',
+    onClickSFX: 'onClickSFX',
   };
 
   private _image: Image;
@@ -42,12 +43,14 @@ export class GameplaySceneView {
     this._topedButtonUIView.create({
       pos: { x: centerX, y: centerY },
       baseRatio: backgroundRatio,
-      onClick: () => this.event.emit(
-        this.evenName.onTapToped, { audioKey: audioAsset.sfx_click.key }
-      )
+      onClick: () => {
+        this.event.emit(this.evenName.onTapToped);
+        this.event.emit(this.evenName.onClickSFX, { audioKey: audioAsset.sfx_click.key });
+      }
     });
 
     this._playHTMLButtonUIView.create({
+      label: 'Play',
       baseRatio: backgroundRatio,
       pos: { x: centerX, y: centerY * 1.25 },
       screenHeight: height,
@@ -55,6 +58,7 @@ export class GameplaySceneView {
         const nextCounter = this._topedButtonUIView.counter + 1;
         this._titleUIView.setText(nextCounter.toString());
         this._topedButtonUIView.setCounter(nextCounter);
+        this.event.emit(this.evenName.onClickSFX, { audioKey: audioAsset.sfx_click.key });
       }
     });
 
