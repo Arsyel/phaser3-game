@@ -50,7 +50,7 @@ export class GameplaySceneView {
     });
 
     this._playHTMLButtonUIView.create({
-      label: 'Play',
+      text: 'Play',
       baseRatio: backgroundRatio,
       pos: { x: centerX, y: centerY * 1.25 },
       screenHeight: height,

@@ -3,7 +3,7 @@ import { gameplayAsset } from '../../../collections/GameplayAsset';
 
 type Props = {
   pos: Required<Phaser.Types.Math.Vector2Like>;
-  label: string;
+  text: string;
   baseRatio: number;
   onClick: CustomTypes.General.EventOp<PointerEvent>;
   screenHeight: number;
@@ -14,12 +14,12 @@ export class PlayButtonUIView {
   constructor (private _scene: Phaser.Scene) {}
 
   create (props: Props) {
-    const { pos, screenHeight, baseRatio, onClick, label } = props;
+    const { pos, screenHeight, baseRatio, onClick, text } = props;
     const buttonElement = this._scene.add.dom(pos.x, 0)
       .createFromCache(gameplayAsset.button_html.key)
       .setScale(2 * baseRatio);
 
-    buttonElement.getChildByID('btn').innerHTML = label;
+    buttonElement.getChildByID('btn').innerHTML = text;
     buttonElement.updateSize();
 
     this._scene.tweens.add({
