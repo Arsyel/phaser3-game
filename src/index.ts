@@ -17,10 +17,10 @@ const config = {
   parent: 'game-wrapper',
   banner: CONFIG.DEVELOPMENT,
   scale: {
-    mode: Phaser.Scale.NONE,
+    mode: Phaser.Scale.FIT,
     width: screenProfile.width,
     height: screenProfile.height,
-    zoom: screenProfile.zoom,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
     autoRound: true,
   },
   backgroundColor: CONFIG.DEVELOPMENT ? '#3498db' : '#1e1e1e',
@@ -37,8 +37,6 @@ const config = {
 const game = new Phaser.Game(config);
 
 const onResize = () => {
-  const { width, height, zoom } = ScreenProfile();
-  game.scale.resize(width, height);
-  game.scale.setZoom(zoom);
+  game.scale.updateBounds();
 };
 window.addEventListener('resize', onResize);
