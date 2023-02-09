@@ -10,7 +10,7 @@ const renderType = () => {
   return isFirefox ? Phaser.WEBGL : Phaser.AUTO;
 };
 
-const screenProfile = ScreenProfile();
+const { width, height } = ScreenProfile('LANDSCAPE');
 
 const config = {
   type: renderType(),
@@ -18,8 +18,8 @@ const config = {
   banner: CONFIG.DEVELOPMENT,
   scale: {
     mode: Phaser.Scale.FIT,
-    width: screenProfile.width,
-    height: screenProfile.height,
+    width,
+    height,
     autoCenter: Phaser.Scale.CENTER_BOTH,
     autoRound: true,
   },

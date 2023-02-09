@@ -11,6 +11,11 @@ export const gameplayAsset = {
     url: 'img/img_responsive.png',
     type: AssetType.STATIC
   },
+  square_test_image: {
+    key: 'square_test_image',
+    url: 'img/img_responsive_square.png',
+    type: AssetType.STATIC
+  },
   button_html: {
     key: 'button_html',
     url: 'html/Button.html',
