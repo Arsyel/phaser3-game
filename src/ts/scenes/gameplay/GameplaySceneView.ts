@@ -7,7 +7,6 @@ import { audioAsset } from '../../collections/AudioAsset';
 import { gameplayAsset } from './../../collections/GameplayAsset';
 
 export class GameplaySceneView {
-
   event: Phaser.Events.EventEmitter;
   evenName = {
     onCreateFinish: 'onCreateFinish',
@@ -20,16 +19,24 @@ export class GameplaySceneView {
   private _topedButtonUIView: TopedButtonUIView;
   private _playHTMLButtonUIView: PlayButtonUIView;
 
-  constructor (private _scene: Phaser.Scene, private _screenUtil: ScreenUtilityController) {
+  constructor(
+    private _scene: Phaser.Scene,
+    private _screenUtil: ScreenUtilityController
+  ) {
     this.event = new Phaser.Events.EventEmitter();
     this._titleUIView = new TitleUIView(_scene);
     this._topedButtonUIView = new TopedButtonUIView(_scene);
     this._playHTMLButtonUIView = new PlayButtonUIView(_scene);
   }
 
-  create () {
+  create() {
     const { centerX, centerY, width, height } = this._screenUtil;
-    this._image = new Image(this._scene, centerX, centerY, gameplayAsset.test_image.key);
+    this._image = new Image(
+      this._scene,
+      centerX,
+      centerY,
+      gameplayAsset.test_image.key
+    );
     this._image.transform.setMaxPreferredDisplaySize(width, height);
 
     const backgroundRatio = this._image.transform.ratio;
@@ -45,8 +52,10 @@ export class GameplaySceneView {
       baseRatio: backgroundRatio,
       onClick: () => {
         this.event.emit(this.evenName.onTapToped);
-        this.event.emit(this.evenName.onClickSFX, { audioKey: audioAsset.sfx_click.key });
-      }
+        this.event.emit(this.evenName.onClickSFX, {
+          audioKey: audioAsset.sfx_click.key,
+        });
+      },
     });
 
     this._playHTMLButtonUIView.create({
@@ -58,11 +67,12 @@ export class GameplaySceneView {
         const nextCounter = this._topedButtonUIView.counter + 1;
         this._titleUIView.setText(nextCounter.toString());
         this._topedButtonUIView.setCounter(nextCounter);
-        this.event.emit(this.evenName.onClickSFX, { audioKey: audioAsset.sfx_click.key });
-      }
+        this.event.emit(this.evenName.onClickSFX, {
+          audioKey: audioAsset.sfx_click.key,
+        });
+      },
     });
 
     this.event.emit(this.evenName.onCreateFinish);
   }
-
 }

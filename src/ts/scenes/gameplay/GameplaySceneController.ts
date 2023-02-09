@@ -9,16 +9,18 @@ type OnClickSFX = (props: { audioKey: string }) => void;
 type OnCreateFinish = CustomTypes.General.Noop;
 
 export class GameplaySceneController extends Phaser.Scene {
-
   view: GameplaySceneView;
   audioController: AudioController;
 
-  constructor () {
+  constructor() {
     super({ key: SceneInfo.GAMEPLAY.key });
   }
 
-  init () {
-    this.view = new GameplaySceneView(this, ScreenUtilityController.getInstance());
+  init() {
+    this.view = new GameplaySceneView(
+      this,
+      ScreenUtilityController.getInstance()
+    );
     this.audioController = AudioController.getInstance();
 
     this.onTapToped(() => {
@@ -34,20 +36,19 @@ export class GameplaySceneController extends Phaser.Scene {
     });
   }
 
-  create () {
+  create() {
     this.view.create();
   }
 
-  onCreateFinish (event: OnCreateFinish) {
+  onCreateFinish(event: OnCreateFinish) {
     this.view.event.once(this.view.evenName.onCreateFinish, event);
   }
 
-  onTapToped (event: OnTapToped) {
+  onTapToped(event: OnTapToped) {
     this.view.event.on(this.view.evenName.onTapToped, event);
   }
 
-  onClickSFX (event: OnClickSFX) {
+  onClickSFX(event: OnClickSFX) {
     this.view.event.on(this.view.evenName.onClickSFX, event);
   }
-
 }
