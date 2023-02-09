@@ -5,15 +5,15 @@ import { LoadingSceneController } from './loading/LoadingSceneController';
 export const SceneInfo = {
   BOOT: {
     key: 'BootScene',
-    scene: BootSceneController
+    scene: BootSceneController,
   },
   LOADING: {
     key: 'LoadingScene',
-    scene: LoadingSceneController
+    scene: LoadingSceneController,
   },
   GAMEPLAY: {
     key: 'GameplayScene',
-    scene: GameplaySceneController
+    scene: GameplaySceneController,
   },
 };
 

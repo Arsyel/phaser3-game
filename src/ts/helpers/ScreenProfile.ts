@@ -1,7 +1,7 @@
 type CalculateScreenType = {
-	width: number;
-	height: number;
-	zoom: number;
+  width: number;
+  height: number;
+  zoom: number;
 };
 
 type ScreenConversionFn = (config: CalculateScreenType) => CalculateScreenType;
@@ -26,10 +26,9 @@ const calculateScreen = () => {
   return {
     width: window.innerWidth * dprModifier,
     height: window.innerHeight * dprModifier,
-    zoom: 1 / dprModifier
+    zoom: 1 / dprModifier,
   };
 };
-
 
 const portraitConversion: ScreenConversionFn = (config) => {
   const height = config.height;
@@ -38,22 +37,22 @@ const portraitConversion: ScreenConversionFn = (config) => {
   return {
     width: toEven(width),
     height: toEven(height),
-    zoom: config.zoom
+    zoom: config.zoom,
   };
 };
 
 const landscapeConversion: ScreenConversionFn = (config) => {
   const width = config.width;
   const isPortrait = config.height > width;
-  const height = !isPortrait ? config.height : width * ASPECT_RATIO; 
+  const height = !isPortrait ? config.height : width * ASPECT_RATIO;
   return {
     width: toEven(width),
     height: toEven(height),
-    zoom: config.zoom
+    zoom: config.zoom,
   };
 };
 
-function ScreenProfile (screenType: ScreenType) {
+function ScreenProfile(screenType: ScreenType) {
   const screenDetail = calculateScreen();
   switch (screenType) {
     case 'LANDSCAPE':

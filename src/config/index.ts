@@ -1,6 +1,6 @@
 type Config = {
-	DEVELOPMENT: boolean;
-	PRODUCTION: boolean;
+  DEVELOPMENT: boolean;
+  PRODUCTION: boolean;
 };
 
 declare const CONFIG: Config;
