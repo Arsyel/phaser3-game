@@ -47,7 +47,7 @@ class ScreenUtilityController {
   }
 
   get activeRatio() {
-    return this._activeRatio;
+    return this._activeRatio ? this._activeRatio : 0;
   }
 
   init(scene: Phaser.Scale.ScaleManager) {
